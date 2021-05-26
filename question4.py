@@ -4,16 +4,16 @@ import datetime
 def main(logfile, N):
     with open(logfile) as f:
         log_list = [r.strip().split(',') for r in f.readlines()]
-        eatch_subnet_logs = {}
+        each_subnet_logs = {}
         for log in log_list:
             network_len = int(log[1].split('/')[1]) / 8
             network_area = ','.join(log[1].split('.')[:int(network_len)])
-            eatch_subnet_logs[network_area] = []
+            each_subnet_logs[network_area] = []
             for log2 in log_list:
                 if network_area == ','.join(log2[1].split('.')[:int(network_len)]):
-                    eatch_subnet_logs[network_area].append(log2)
+                    each_subnet_logs[network_area].append(log2)
         
-        for logs in eatch_subnet_logs.values():
+        for logs in each_subnet_logs.values():
             timeout_count = 0
             for i in range(len(logs)):
                 if logs[i][-1] == '-':

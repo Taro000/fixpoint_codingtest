@@ -4,14 +4,14 @@ import datetime
 def main(logfile, N):
     with open(logfile) as f:
         log_list = [r.strip().split(',') for r in f.readlines()]
-        eatch_server_logs = {}
+        each_server_logs = {}
         for log in log_list:
-            eatch_server_logs[log[1]] = []
+            each_server_logs[log[1]] = []
             for log2 in log_list:
                 if log[1] == log2[1]:
-                    eatch_server_logs[log[1]].append(log2)
+                    each_server_logs[log[1]].append(log2)
         
-        for logs in eatch_server_logs.values():
+        for logs in each_server_logs.values():
             timeout_count = 0
             for i in range(len(logs)):
                 if logs[i][-1] == '-':
